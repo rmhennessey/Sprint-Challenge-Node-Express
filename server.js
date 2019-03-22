@@ -1,14 +1,14 @@
 const express = require('express'); 
 
-// const postsUser = require('./users/users-router.js')
-// const postsPost = require('./posts/posts-router.js')
+const actionPost = require('./actions/actions-router')
+const projectPost = require('./projects/projects-router')
 
 const server = express();
 
 server.use(express.json());
 
-// server.use('/api/users', postsUser)
-// server.use('/api/posts', postsPost)
+server.use('/api/actions', actionPost)
+server.use('/api/projects', projectPost)
 
 server.get('/', (req, res) => {
     res.send(`
