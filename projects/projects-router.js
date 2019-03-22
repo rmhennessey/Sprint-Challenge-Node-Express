@@ -44,6 +44,7 @@ router.get('/:id/actions', (req,res) => {
                     .json({ message: "The project with the specified ID does not exist." });
             } else {
                 res
+                    .status(200)
                     .json(projectAction);
             }
         })
