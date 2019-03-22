@@ -32,6 +32,28 @@ router.get('/:id', (req, res) => {
         })
 })
 
+router.get('/:id/actions', (req,res) => {
+    const id = req.params.id;
+    
+    projectDb
+        .getProjectActions(id)
+        .then(projectAction => {
+            if (projectAction === 0) {
+                res
+                    .status(404)
+                    .json({ message: "The project with the specified ID does not exist." });
+            } else {
+                res
+                    .json(projectAction);
+            }
+        })
+        .catch(err => {
+            res
+                .status(500)
+                .json({ error: "Request Failure Occurred"})   
+        })
+})
+
 router.post('/', (req, res) => {
     const info = req.body;
 
